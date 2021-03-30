@@ -42,6 +42,11 @@ def generate_graph(num_verticies,size_of_map):
     :param max_weight: the size of *edge* which is n, of an n by n map
     :return: the generated graph
     """
+    
+    #Generate a coordinate system of (x,y) where x, y is from 0~size-of-map
+    #randommly throw n number of vertices to the coordiante system, each vertex should have a unique coordinate
+    #calculate distance between all the graphs
+    #assign them to Graph g
     g = Graph()
 
     return g

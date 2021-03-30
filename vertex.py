@@ -10,11 +10,12 @@ class Vertex:
         self.id = key
         self.connectTo = {}
 
-    def add_neighbor(self, nbr, weight=0):
+    def add_neighbor(self, nbr, weight=9):
         self.connectTo[nbr] = weight
 
     def get_connections(self):
         return self.connectTo.keys()
+        # return a set of vertex connection to a particular a vertex
 
     def get_id(self):
         return self.id

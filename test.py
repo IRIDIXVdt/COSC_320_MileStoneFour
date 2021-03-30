@@ -5,6 +5,7 @@ from graph import Graph
 
 
 def generate_graph(num_vertices, max_num_edge, max_weight):
+    # We will abandon this method due to some of its deficiencies
     """
     Randomly generate the graph
     :param num_vertices: vertex numverss
@@ -30,6 +31,17 @@ def generate_graph(num_vertices, max_num_edge, max_weight):
     return g
 
 
+def generate_graph(num_verticies,branching_factor,size_of_map):
+    """
+    Randomly generate the graph
+    :param num_vertices: vertex numverss
+    :param max_num_edge: maximum number of edges
+    :param max_weight: maximum weight
+    :return: the generated graph
+    """
+    g = Graph()
+
+    return g
 
 #def heuristic(goal, nbr):
     #return abs(goal - nbr.get_id())
@@ -141,11 +153,11 @@ if __name__ == "__main__":
     
 
     # Randomly generate the graph
-    g = generate_graph(100, 3, 9)
-    for v in g:
-            for w in v.get_connections():
-                print("(%s, %s)  the cost/weight: %s  %s" % (v.get_id(), w.get_id(), v.get_weight(w), v.get_id()))
+    g = generate_graph(1000, 3, 9)
+    # for v in g:
+    #         for w in v.get_connections():
+    #             print("(%s, %s)  the cost/weight: %s  %s" % (v.get_id(), w.get_id(), v.get_weight(w), v.get_id()))
 
     
-    a_star_algorithm(g, 10 ,51)
+    a_star_algorithm(g, 10 ,511)
     

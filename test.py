@@ -31,12 +31,15 @@ def generate_graph(num_vertices, max_num_edge, max_weight):
     return g
 
 
-def generate_graph(num_verticies,branching_factor,size_of_map):
+def generate_graph(num_verticies,size_of_map):
     """
     Randomly generate the graph
-    :param num_vertices: vertex numverss
-    :param max_num_edge: maximum number of edges
-    :param max_weight: maximum weight
+    :param num_vertices: vertex number
+    :param max_num_edge: branching factor 
+        # we will implement it later #
+        notice that a branching factor is:
+        the average number of edges a node has
+    :param max_weight: the size of *edge* which is n, of an n by n map
     :return: the generated graph
     """
     g = Graph()

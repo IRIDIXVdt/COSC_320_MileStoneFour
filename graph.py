@@ -1,9 +1,9 @@
 import random
 import math
 #map size(x*y)
-rangeX = 10000
-rangeY = 10000
-qty = 500 # or however many points you want
+rangeX = 100
+rangeY = 100
+qty = 5 # or however many points you want
 # and the matrix of distance will also be qty by qty
 #random vertex
 openfile = open('file.txt','w')
@@ -36,6 +36,12 @@ for node in cell_array2:
 
 def calDistance( p1, p2 ):
    return round(math.sqrt( ((p1[0]-p2[0])**2)+((p1[1]-p2[1])**2) ),3)
+   
+def removePair( map, i, j):
+    # we remove a flight availabe between city index i and j
+   map[i][j]=-1
+   map[j][i]=-1
+   
 
 distanceMap = []
 # index corresponds to the order we have in cell_array
@@ -48,8 +54,12 @@ for node in cell_array2:
         distanceArray.append(calDistance( node, node2 ))# iterate through each pair of node and compute distances
     distanceMap.append(distanceArray)
 
-# print(distanceMap)
+print(distanceMap)
 # now we have the distanceMap ready
+removePair(distanceMap,2,3)
+
+print(distanceMap)
+
 
 
     

@@ -35,10 +35,10 @@ cell_array2 = [list(map (int,i)) for i in cell_array]
 def calDistance( p1, p2 ):
         return round(math.sqrt( ((p1[0]-p2[0])**2)+((p1[1]-p2[1])**2) ),3)
    
-def removePair( map, i, j):
+def removePair( mapInput, i, j):
     # we remove a flight availabe between city index i and j
-        map[i][j]=-1
-        map[j][i]=-1
+        mapInput[i][j]=-1
+        mapInput[j][i]=-1
    
 
 distanceMap = []
@@ -69,33 +69,31 @@ def randomFlightPlan( mapInput, branchingFactor, qty):
     # print(mapCopy)
     # print(mapInput)
     # notice that the original branching factor would be qty-1
-    chance = (qty-branchingFactor)/(qty)# this is the chance we need to remove the node 
-    # print(chance)
-    totalRandomNumber = 0
-    totalNumber = 0
+    chance = branchingFactor/qty# this is the chance we need to remove the node 
+    # oldBranchNumber = (qty+1)*qty
+    # newBranchNumber = (qty+1)*branchingFactor
+    print('chance is : ', chance)
     for i in range(1,qty):
-        for j in range(0,i-1):
+        for j in range(0,i):
             target = random.random()
-            totalRandomNumber+=target
-            totalNumber+=1
-            if (target<chance):
+            # print('The current pair is: ', i ,j)
+            if (target>chance):
                 removePair(mapCopy,i,j)
     # print(mapCopy)
-    print(totalRandomNumber/totalNumber)
     return mapCopy
 
-def calBF(mapInput,qty):
+def calBF(mapInput,qtyInput):
     existBranch = 0
     for line in mapInput:
         for element in line:
             if (element>0):
                 existBranch+=1
-    # print(existBranch)
-    branchingFactor = existBranch/(qty+1)
+    print('exist branch number is: ',existBranch)
+    branchingFactor = existBranch/(qtyInput)
     print('branching factor is :', branchingFactor)
 
-
-mapFlight = randomFlightPlan(distanceMap,5,qty)
+calBF(distanceMap,qty)
+mapFlight = randomFlightPlan(distanceMap,8,qty)
 calBF(mapFlight,qty)
 # print(random.random())
 

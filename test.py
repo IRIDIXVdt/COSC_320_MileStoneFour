@@ -12,7 +12,7 @@ from graph2 import Graph
 if __name__ == "__main__":
     # Using the insertion method to generate the graph
     g = Graph(1000,1000,10)
-    print(g.randomVertex(1000,1000,5))
+    g.generate_graph()
     #for i in range(6):
     #g.add_vertex(i)
     #g.add_edge(0, 1, 5)

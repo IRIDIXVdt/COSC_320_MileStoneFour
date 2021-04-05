@@ -5,18 +5,19 @@ class Graph:
         self.rangeX = rangeX
         self.rangeY = rangeY
         self.qty = qty
-    
-    def randomVertex(self,rangeX,rangeY,qty):
         openfile = open('file.txt','w')
         for x in random.sample(range(self.rangeX*self.rangeY),self.qty):
             openfile.write(str('{},{}'.format(*divmod(x,self.rangeX)))+ '\n')
         openfile.close()
+    
+    def generate_graph(self):    
         cell_array = [[]]
         with open('file.txt','r') as file:
             line_array = file.read().splitlines()
             cell_array = [line.split(',') for line in line_array]
-            
         cell_array2 = [list(map (int,i)) for i in cell_array]
+        print(cell_array2)
         return cell_array2
+        
 
     

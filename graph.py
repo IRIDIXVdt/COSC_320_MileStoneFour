@@ -1,24 +1,25 @@
 import random
 import math
 #map size(x*y)
-    rangeX = 100
-    rangeY = 100
-    qty = 5 # or however many points you want
+
+rangeX = 10000
+rangeY = 10000
+qty = 1000 # or however many points you want
 # and the matrix of distance will also be qty by qty
 #random vertex
-    openfile = open('file.txt','w')
-    for x in random.sample(range(rangeX*rangeY),qty):
-      openfile.write(str('{},{}'.format(*divmod(x,rangeX)))+ '\n')
-    #print('{},{}'.format(*divmod(x,rangeX)))
+openfile = open('file.txt','w')
+for x in random.sample(range(rangeX*rangeY),qty):
+    openfile.write(str('{},{}'.format(*divmod(x,rangeX)))+ '\n')
+#print('{},{}'.format(*divmod(x,rangeX)))
 
-    openfile.close()
-    cell_array = [[]]
-    with open('file.txt','r') as file:
-        line_array = file.read().splitlines()
-        cell_array = [line.split(',') for line in line_array]
+openfile.close()
+cell_array = [[]]
+with open('file.txt','r') as file:
+    line_array = file.read().splitlines()
+    cell_array = [line.split(',') for line in line_array]
 
-        print (cell_array)
-    cell_array2 = [list(map (int,i)) for i in cell_array]
+    # print (cell_array)
+cell_array2 = [list(map (int,i)) for i in cell_array]
 
 
 # （2. 这个先不着急 但是这个随机的分布 真的没问题么 我觉得按照一个模拟现实的地图 
@@ -27,8 +28,8 @@ import math
 # print (cell_array2)
 
 
-    for node in cell_array2:
-        print(node)
+# for node in cell_array2:
+#     print(node)
 
 
 def calDistance( p1, p2 ):
@@ -51,26 +52,51 @@ for node in cell_array2:
         distanceArray.append(calDistance( node, node2 ))# iterate through each pair of node and compute distances
     distanceMap.append(distanceArray)
 
-print(distanceMap)
+# print(distanceMap)
 # now we have the distanceMap ready
-removePair(distanceMap,2,3)
+# removePair(distanceMap,2,3)
 
-print(distanceMap)
+# print(distanceMap)
 
-def randomFlightPlan( map, branchingFactor, qty):
+def randomFlightPlan( mapInput, branchingFactor, qty):
     # we first create a copy of the array
-    
+    mapCopy = []
+    for line in mapInput:
+        newline = []
+        for element in line:
+            newline.append(element)
+        mapCopy.append(newline)
+    # print(mapCopy)
+    # print(mapInput)
     # notice that the original branching factor would be qty-1
-    chance = branchingFactor/(qty-1)
-    print(chance)
-    for i in range(0,qty):
-        for j in range(i,qty):
+    chance = (qty-branchingFactor)/(qty)# this is the chance we need to remove the node 
+    # print(chance)
+    totalRandomNumber = 0
+    totalNumber = 0
+    for i in range(1,qty):
+        for j in range(0,i-1):
             target = random.random()
+            totalRandomNumber+=target
+            totalNumber+=1
             if (target<chance):
-                removePair(map,i,j)
+                removePair(mapCopy,i,j)
+    # print(mapCopy)
+    print(totalRandomNumber/totalNumber)
+    return mapCopy
+
+def calBF(mapInput,qty):
+    existBranch = 0
+    for line in mapInput:
+        for element in line:
+            if (element>0):
+                existBranch+=1
+    # print(existBranch)
+    branchingFactor = existBranch/(qty+1)
+    print('branching factor is :', branchingFactor)
 
 
-randomFlightPla
-
+mapFlight = randomFlightPlan(distanceMap,5,qty)
+calBF(mapFlight,qty)
+# print(random.random())
 
     

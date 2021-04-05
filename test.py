@@ -11,27 +11,17 @@ from graph2 import Graph
 
 if __name__ == "__main__":
     # Using the insertion method to generate the graph
-    g = Graph(1000,1000,10)
-    g.generate_graph()
-    #for i in range(6):
-    #g.add_vertex(i)
-    #g.add_edge(0, 1, 5)
-    #g.add_edge(0, 5, 2)
-    #g.add_edge(1, 2, 4)
-    #g.add_edge(2, 3, 9)
-    #g.add_edge(3, 4, 7)
-    #g.add_edge(3, 5, 3)
-    #g.add_edge(4, 0, 1)
-    #g.add_edge(5, 4, 8)
-    #g.add_edge(5, 2, 1)
+    g = Graph(1000,1000,100)
+   
+    # read map
+    mapFlight = g.read_graph()
+    # create distance matrix
+    distanceMatrix = g.generateMatrix()
+    # create flight plan matrix
+    flightPlanMatrix = g.randomFlightPlan(distanceMatrix,6)
 
-    
+    print(flightPlanMatrix)
+    g.calBF(flightPlanMatrix)
 
-    # Randomly generate the graph
-    # for v in g:
-    #         for w in v.get_connections():
-    #             print("(%s, %s)  the cost/weight: %s  %s" % (v.get_id(), w.get_id(), v.get_weight(w), v.get_id()))
-
-    
     
     

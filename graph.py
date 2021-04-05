@@ -1,24 +1,24 @@
 import random
 import math
 #map size(x*y)
-rangeX = 100
-rangeY = 100
-qty = 5 # or however many points you want
+    rangeX = 100
+    rangeY = 100
+    qty = 5 # or however many points you want
 # and the matrix of distance will also be qty by qty
 #random vertex
-openfile = open('file.txt','w')
-for x in random.sample(range(rangeX*rangeY),qty):
-    openfile.write(str('{},{}'.format(*divmod(x,rangeX)))+ '\n')
+    openfile = open('file.txt','w')
+    for x in random.sample(range(rangeX*rangeY),qty):
+      openfile.write(str('{},{}'.format(*divmod(x,rangeX)))+ '\n')
     #print('{},{}'.format(*divmod(x,rangeX)))
 
-openfile.close()
-cell_array = [[]]
-with open('file.txt','r') as file:
-    line_array = file.read().splitlines()
-    cell_array = [line.split(',') for line in line_array]
+    openfile.close()
+    cell_array = [[]]
+    with open('file.txt','r') as file:
+        line_array = file.read().splitlines()
+        cell_array = [line.split(',') for line in line_array]
 
-    print (cell_array)
-cell_array2 = [list(map (int,i)) for i in cell_array]
+        print (cell_array)
+    cell_array2 = [list(map (int,i)) for i in cell_array]
 
 # 你的graph的确能创建一个随机的map 坐标都在范围之内 很好 但是我有两个疑问
 # 1. 为什么一定需要输出 然后读取一个文件 我不太明白这一步的必要性
@@ -30,17 +30,17 @@ cell_array2 = [list(map (int,i)) for i in cell_array]
 # print (cell_array2)
 
 
-for node in cell_array2:
-    print(node)
+    for node in cell_array2:
+        print(node)
 
 
 def calDistance( p1, p2 ):
-   return round(math.sqrt( ((p1[0]-p2[0])**2)+((p1[1]-p2[1])**2) ),3)
+        return round(math.sqrt( ((p1[0]-p2[0])**2)+((p1[1]-p2[1])**2) ),3)
    
 def removePair( map, i, j):
     # we remove a flight availabe between city index i and j
-   map[i][j]=-1
-   map[j][i]=-1
+        map[i][j]=-1
+        map[j][i]=-1
    
 
 distanceMap = []

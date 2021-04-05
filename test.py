@@ -161,7 +161,6 @@ if __name__ == "__main__":
     
 
     # Randomly generate the graph
-    g = generate_graph(1000, 3, 9)
     # for v in g:
     #         for w in v.get_connections():
     #             print("(%s, %s)  the cost/weight: %s  %s" % (v.get_id(), w.get_id(), v.get_weight(w), v.get_id()))

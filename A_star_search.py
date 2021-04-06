@@ -1,6 +1,6 @@
 from queue import PriorityQueue
 class a_star_search:
-    
+    def __init__(slef, name)
     def a_star(self,g, start, goal):
         frontier = PriorityQueue()
         frontier.put(start, 0)

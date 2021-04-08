@@ -23,8 +23,7 @@ if __name__ == "__main__":
     
     g.calBF(flightPlanMatrix)
     search = a_star_search()
-    heuristic = search.heuristic()
-    find_path = search.a_star_search_algorithm()
+    find_path = search.a_star_search_algorithm(flightPlanMatrix,distanceMatrix,start,end)
 
 
     

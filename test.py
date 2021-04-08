@@ -20,10 +20,6 @@ if __name__ == "__main__":
     flightPlanMatrix = g.randomFlightPlan(distanceMatrix,3)
 
     print(flightPlanMatrix)
-    #兄弟今天我没法跟你meeting了，我这边360的队友们找我meeting写code
-    #关于nodes的想法：找到每个key。我感觉用matrix的index就可行 然后把哪个点与哪个点之间有连线 类似于1->2,3 2->5这种我没想到怎么实现它或者我整个的思路就有问题
-    #https://www.annytab.com/a-star-search-algorithm-in-python/ 这个是我在网上找的例子
-    #
     
     g.calBF(flightPlanMatrix)
     search = a_star_search()

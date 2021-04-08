@@ -32,11 +32,10 @@ def a_star_search_algorithm(graph=[[]], heuristic=[[]], start_node=0, end_node):
 
 
 def find_neighbours(graph,current_node):
-    a = graph[current_node]
-    neighbours = []
+    a = graph[current_node] #get current_node column
+    neighbours = []         #create a neighbours matrix to store neighbours
     for i in range (len(a)):
         if a[i] > 0:
             append.neighbours(i)
-
-
+    #if the distance is greater than 0, store them in it
     return neighbours

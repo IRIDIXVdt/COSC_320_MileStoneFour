@@ -1,6 +1,6 @@
 
 
-def a_star_search_algorithm(graph=[[]], heuristic=[[]], start_node=0, end_node):
+def a_star_search_algorithm(graph=[[]], heuristic=[[]], start_node=0, end_node=1):
     frontier = [start_node]
     # to store the list of nodes we are about to pop
     explored = [start_node]
@@ -22,20 +22,21 @@ def a_star_search_algorithm(graph=[[]], heuristic=[[]], start_node=0, end_node):
             # now we iterate through all available actions in node
             
             # define child as the successor we are looking at in the iteratoipn
-            if(explored.index(child) == -1 && frontier.index(child) == -1):
+            if(explored.index(child) == -1 and frontier.index(child) == -1):
                 frontier.append(child)
                 frontier.sort()
                 # if child's state is not in frontier or explored then we add it to the frontier
-            else if():
+            # else if():
     return None
 
 
 
 def find_neighbours(graph,current_node):
-    a = graph[current_node] #get current_node column
     neighbours = []         #create a neighbours matrix to store neighbours
-    for i in range (len(a)):
-        if a[i] > 0:
-            append.neighbours(i)
+    for i in range(0,len(graph[current_node])):#iterate through a line in the relation matrix
+        neighbour = graph[current_node][i]
+        if(neighbour>0):
+            # then we have a connection
+            neighbours.append(i)
     #if the distance is greater than 0, store them in it
     return neighbours

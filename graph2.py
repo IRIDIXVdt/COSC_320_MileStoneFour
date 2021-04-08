@@ -16,7 +16,7 @@ class Graph:
             line_array = file.read().splitlines()
             cell_array = [line.split(',') for line in line_array]
         cell_array2 = [list(map (int,i)) for i in cell_array]
-        print(cell_array2)
+        # print(cell_array2)
         return cell_array2
     
     def calDistance(self,p1,p2):

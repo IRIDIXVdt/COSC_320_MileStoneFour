@@ -1,16 +1,11 @@
 import random
-from queue import PriorityQueue
 from graph2 import Graph
-from algorithm import algorithm
-#def heuristic(goal, nbr):
-    #return abs(goal - nbr.get_id())
-
+import algorithm
 
 
 if __name__ == "__main__":
     # Using the insertion method to generate the graph
-    g = Graph(10,10,5)
-   
+    g = Graph(10,10,8)
     # read map
     mapFlight = g.read_graph()
     # create distance matrix
@@ -18,10 +13,12 @@ if __name__ == "__main__":
     # create flight plan matrix
     flightPlanMatrix = g.randomFlightPlan(distanceMatrix,3)
 
-    print(flightPlanMatrix)
+    for line in flightPlanMatrix:
+        print(line)
     
     g.calBF(flightPlanMatrix)
     test = algorithm.find_neighbours(flightPlanMatrix,2)
+    print(test)
 
 
     

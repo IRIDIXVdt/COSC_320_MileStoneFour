@@ -1,8 +1,7 @@
 import random
 from queue import PriorityQueue
 from graph2 import Graph
-from A_star_search import a_star_search
-
+from algorithm import algorithm
 #def heuristic(goal, nbr):
     #return abs(goal - nbr.get_id())
 
@@ -22,8 +21,7 @@ if __name__ == "__main__":
     print(flightPlanMatrix)
     
     g.calBF(flightPlanMatrix)
-    search = a_star_search()
-    find_path = search.a_star_search_algorithm(flightPlanMatrix,distanceMatrix,start,end)
+    test = algorithm.find_neighbours(flightPlanMatrix,2)
 
 
     

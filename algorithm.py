@@ -1,42 +1,118 @@
-
-
-def a_star_search_algorithm(graph=[[]], heuristic=[[]], start_node=0, end_node=1):
-    frontier = [start_node]
-    # to store the list of nodes we are about to pop
-    explored = [start_node]
-    # to store the list of nodes we have explored
-    while true:
-        if(len(frontier) == 0):
-            return None
-            # as there is no solution
-        current = frontier.pop(0)
-        # this is the node of the lowest cost
-        if(current == end_node):
-            print('found solution')
-            return end_node
-        # we have the optimal solution
-        explored.append(current)
-        # add the state of node to the expolored list
-        current_node_neighbours = find_neighbours(graph,current)
-        for child in current_node_neighbours:
-            # now we iterate through all available actions in node
-            
-            # define child as the successor we are looking at in the iteratoipn
-            if(explored.index(child) == -1 and frontier.index(child) == -1):
-                frontier.append(child)
-                frontier.sort()
-                # if child's state is not in frontier or explored then we add it to the frontier
-            # else if():
-    return None
-
-
+class State:
+    # Initialize the class
+    def __init__(self, index,parent_index, optimal_path_cost):
+        self.index = index
+        self.parent_index = parent_index
+        self.optimal_path_cost = optimal_path_cost
+    def __eq__(self, other):    # Compare nodes
+        return self.optimal_path_cost == other.optimal_path_cost
+    def __lt__(self, other): # Sort nodes
+         return self.optimal_path_cost < other.optimal_path_cost
 
 def find_neighbours(graph,current_node):
     neighbours = []         #create a neighbours matrix to store neighbours
     for i in range(0,len(graph[current_node])):#iterate through a line in the relation matrix
-        neighbour = graph[current_node][i]
-        if(neighbour>0):
+        bridge = graph[current_node][i]
+        if(bridge>0):
             # then we have a connection
             neighbours.append(i)
     #if the distance is greater than 0, store them in it
+    # print('current_node is: ',current_node)
+    # print('neighbours are: ',neighbours)
     return neighbours
+
+def in_array(frontier,state):
+    # for i in frontier:
+    #     if(i.index == index):
+    #         return i
+    # return None
+    # we return the index given state
+    for i in range(0,len(frontier)):
+        if(frontier[i].index == state):
+            return i
+    return -1
+    # if we do not have a result, we return -1
+
+def update_optimal_solution(graph,frontier,solution_map,cost_map,parent,child):
+    # now find the distance cost between parent and child
+    print('try to insert optimal solution now:',parent,child)
+    cost = graph[parent][child]
+    # find the optimal path cost to child
+    optimal_cost = cost+cost_map[parent]
+    frontier_node_index = in_array(frontier,child)
+    if(frontier_node_index != -1):
+        if(frontier[frontier_node_index].optimal_path_cost>optimal_cost):
+            print('---------------------We update the frontier',frontier[frontier_node_index].optimal_path_cost,optimal_cost)
+            frontier[frontier_node_index].optimal_path_cost=optimal_cost
+            frontier[frontier_node_index].parent_index = parent
+    elif(frontier_node_index == -1):
+        print('We append to frontier')
+        frontier.append(State(child,parent,optimal_cost))    
+    frontier.sort()    
+
+
+
+
+
+def uniform_cost_search(graph=[[]], start_node=0, end_node=1):
+    frontier = [State(start_node,start_node,0)]# to store the list of nodes we are about to pop
+    # explored = []# to store the list of nodes we have explored
+    
+    solution_map = []
+    cost_map = []
+    for line in graph:
+        cost_map.append(-1)
+        solution_map.append("from: ")
+    # the two arrays above tracks the costs and solution
+    # solution_map[start_node]+= str(start_node)+' -> '
+
+    while True:
+        if(len(frontier) == 0):
+            print('No solution')
+            return False # as there is no solution
+        current_node = frontier.pop(0)# this is the node of the lowest cost
+        print('now we pop ',current_node.index)
+        print('list is like this ', len(frontier))
+        current = current_node.index
+        
+        cost_map[current] = current_node.optimal_path_cost
+        if(current_node.parent_index != None):
+            solution_map[current]= solution_map[current_node.parent_index]+' -> '+str(current)
+        # add the state of node to the expolored list
+
+        if(current == end_node):
+            print('found solution')
+            print('Path cost is: ', current_node.optimal_path_cost)
+            print('Path is ',solution_map[current])
+            return True
+        # we have the optimal solution
+        # explored.append(current)
+
+        current_node_neighbours = find_neighbours(graph,current)
+        parent = current #for clarity, we call this parent now
+        for child in current_node_neighbours:
+            # now we iterate through all available actions in node
+            
+            # define child as the successor we are looking at in the iteratoipn
+            if(cost_map[child] == -1):#not in the cost map list means we do not have its op sol'n, and not in the explored list
+                # we handle everything in update optimal solution
+                update_optimal_solution(graph,frontier,solution_map,cost_map,parent,child)
+            
+            
+            
+            
+            
+            
+            #  and not(in_array(frontier,child))):
+            #     frontier.append(Node(start,current_node.optimal_path_cost+graph[child][parent]))
+            #     frontier.sort()
+            #     # if child's state is not in frontier or explored then we add it to the frontier
+            # elif(in_array(frontier,child)):
+            #     update_optimal_solution(graph,solution_map,cost_map,parent,child)
+            #     frontier.sort()
+
+
+
+
+
+

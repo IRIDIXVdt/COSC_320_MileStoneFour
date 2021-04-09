@@ -35,18 +35,18 @@ def in_array(frontier,state):
 
 def update_optimal_solution(graph,frontier,solution_map,cost_map,parent,child):
     # now find the distance cost between parent and child
-    print('try to insert optimal solution now:',parent,child)
+    # print('try to insert optimal solution now:',parent,child)
     cost = graph[parent][child]
     # find the optimal path cost to child
     optimal_cost = cost+cost_map[parent]
     frontier_node_index = in_array(frontier,child)
     if(frontier_node_index != -1):
         if(frontier[frontier_node_index].optimal_path_cost>optimal_cost):
-            print('---------------------We update the frontier',frontier[frontier_node_index].optimal_path_cost,optimal_cost)
+            # print('---------------------We update the frontier',frontier[frontier_node_index].optimal_path_cost,optimal_cost)
             frontier[frontier_node_index].optimal_path_cost=optimal_cost
             frontier[frontier_node_index].parent_index = parent
     elif(frontier_node_index == -1):
-        print('We append to frontier')
+        # print('We append to frontier')
         frontier.append(State(child,parent,optimal_cost))    
     frontier.sort()    
 
@@ -55,6 +55,7 @@ def update_optimal_solution(graph,frontier,solution_map,cost_map,parent,child):
 
 
 def uniform_cost_search(graph=[[]], start_node=0, end_node=1):
+    print('We start from',start_node,'and try to find how to get to',end_node)
     frontier = [State(start_node,start_node,0)]# to store the list of nodes we are about to pop
     # explored = []# to store the list of nodes we have explored
     
@@ -71,8 +72,8 @@ def uniform_cost_search(graph=[[]], start_node=0, end_node=1):
             print('No solution')
             return False # as there is no solution
         current_node = frontier.pop(0)# this is the node of the lowest cost
-        print('now we pop ',current_node.index)
-        print('list is like this ', len(frontier))
+        # print('now we pop ',current_node.index)
+        # print('list is like this ', len(frontier))
         current = current_node.index
         
         cost_map[current] = current_node.optimal_path_cost
@@ -102,15 +103,6 @@ def uniform_cost_search(graph=[[]], start_node=0, end_node=1):
             
             
             
-            
-            #  and not(in_array(frontier,child))):
-            #     frontier.append(Node(start,current_node.optimal_path_cost+graph[child][parent]))
-            #     frontier.sort()
-            #     # if child's state is not in frontier or explored then we add it to the frontier
-            # elif(in_array(frontier,child)):
-            #     update_optimal_solution(graph,solution_map,cost_map,parent,child)
-            #     frontier.sort()
-
 
 
 

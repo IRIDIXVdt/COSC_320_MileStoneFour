@@ -9,16 +9,16 @@ import matplotlib.pyplot as plt
 
 if __name__ == "__main__":
     # Using the insertion method to generate the graph
-    g = Graph(100,100,10)
+    g = Graph(100,100,100)
     # read map
     mapFlight = g.read_graph()
     # create distance matrix
     distanceMatrix = g.generateMatrix()
     # create flight plan matrix
     flightPlanMatrix = g.randomFlightPlan(distanceMatrix,3)
-
-    for line in flightPlanMatrix:
-        print(line)
+    
+    # for line in flightPlanMatrix:
+    #     print(line)
     
     g.calBF(flightPlanMatrix)
 

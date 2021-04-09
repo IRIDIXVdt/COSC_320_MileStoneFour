@@ -8,23 +8,16 @@ import matplotlib.pyplot as plt
 
 
 if __name__ == "__main__":
-    # Using the insertion method to generate the graph
-    g = Graph(100,100,100)
-    # read map
-    mapFlight = g.read_graph()
-    # create distance matrix
-    distanceMatrix = g.generateMatrix()
-    # create flight plan matrix
-    flightPlanMatrix = g.randomFlightPlan(distanceMatrix,3)
-    
-    # for line in flightPlanMatrix:
-    #     print(line)
+    g = Graph(100,100,100) # We 'Draw' a map in a coordinate system
+    mapFlight = g.read_graph()   # read map
+    distanceMatrix = g.generateMatrix()    # create distance matrix
+    flightPlanMatrix = g.randomFlightPlan(distanceMatrix,6)    # create flight plan matrix
     
     g.calBF(flightPlanMatrix)
 
-    test1 = algorithm.uniform_cost_search(flightPlanMatrix,5,6)
+    test1 = algorithm.uniform_cost_search(flightPlanMatrix,5,10)
     
-    # test2 = algorithm.find_neighbours(flightPlanMatrix,5)
+    test2 = algorithm.a_star_search(flightPlanMatrix,flightPlanMatrix,5,10)
     # print(test)
     # ns = range(1,1000,50) #set X-axis range and incremental 
     # nValues, tValues = PlotRunningTime.runningTime(g,Ns = ns, numTrials = 10)

@@ -60,7 +60,8 @@ class Graph:
         chance = branchingFactor/self.qty# this is the chance we need to remove the node 
     # oldBranchNumber = (qty+1)*qty
     # newBranchNumber = (qty+1)*branchingFactor
-        print('chance is : ', chance)
+        print("We need a branching of ",branchingFactor)
+        print('The chance of having an edage betweeen any two city is : ', chance)
         for i in range(1,self.qty):
             for j in range(0,i):
                 target = random.random()
@@ -69,6 +70,7 @@ class Graph:
                     self.removePair(mapCopy,i,j)
     # print(mapCopy)
         return mapCopy
+
     def calBF(self,mapInput):
         existBranch = 0
         for line in mapInput:
@@ -77,5 +79,6 @@ class Graph:
                     existBranch+=1
         print('exist branch number is: ',existBranch)
         branchingFactor = existBranch/(self.qty)
-        print('branching factor is :', branchingFactor)
+        print('the real branching factor is :', branchingFactor)
+
     

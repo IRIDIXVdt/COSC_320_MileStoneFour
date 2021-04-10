@@ -157,7 +157,12 @@ def a_star_search(graph=[[]], heuristic=[[]], start_node=0, end_node=1):
                 update_optimal_solution_A_Star(graph,heuristic,frontier,solution_map,cost_map,parent,child,end_node)
                 # notice that the update function is different
                 # it is because we are using different evaluations
-            
+def b_power_d(b,d):
+    dummy = 0
+    for i in range(0, pow(b,d)):
+        dummy +=1
+
+
             
             
             

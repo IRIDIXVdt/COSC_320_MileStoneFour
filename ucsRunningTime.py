@@ -18,7 +18,7 @@ def runningTime(graph, Ns = range(5,10,1), numTrials = 5):
             startPoint = random.randint(0,n-1)
             endPoint = random.randint(0,n-1)
             start = time.time()#start time
-            algorithm.a_star_search(flightPlanMatrix,flightPlanMatrix,startPoint,endPoint) #call algorithm
+            algorithm.uniform_cost_search(flightPlanMatrix,startPoint,endPoint)#call method
             end = time.time() #end time
             runtime += (end - start) * 1000 #cover to milliseconds
         runtime = runtime/numTrials #get the average

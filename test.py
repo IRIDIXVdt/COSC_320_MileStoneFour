@@ -25,8 +25,8 @@ if __name__ == "__main__":
     nValues2, tValues2 = PlotRunningTime.runningTime(g,Ns = ns, numTrials = 10)#put value in to the runningTime method in PlotRunningTime page
     plt.plot(nValues, tValues, color="red", label="A Star Search") #plot a star search running time with red line and a star search lable
     plt.plot(nValues2, tValues2, "--", color="blue", label="UCS") #plot UCS running time with -- line, blue color and UCS lable
-    plt.plot(ns,[pow(6,b) for b in ns],color = "orange",label="O(d^b)") #plot O(d^b) running time with orange color and O(d^b) lable
-    plt.xlabel('n') #X represents n
+    plt.plot(ns,[pow(6,b) for b in ns],color = "orange",label="O(b^d)") #plot O(b^d) running time with orange color and O(d^b) lable
+    plt.xlabel('b^d') #X represents n
     plt.ylabel('Time(ms)')#Y represents Time(ms)
     plt.title('A star search running time')#Graph title represents A star search running time
     plt.legend()

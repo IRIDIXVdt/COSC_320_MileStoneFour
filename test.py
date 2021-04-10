@@ -19,12 +19,12 @@ if __name__ == "__main__":
     
     test2 = algorithm.a_star_search(flightPlanMatrix,flightPlanMatrix,5,10)
     # print(test)
-    # ns = range(1,1000,50) #set X-axis range and incremental 
-    # nValues, tValues = PlotRunningTime.runningTime(g,Ns = ns, numTrials = 10)
-    # plt.plot(nValues, tValues, color="red", label="Random Graph Runing Time")
-    # plt.xlabel('n')
-    # plt.ylabel('Time(ms)')
-    # plt.title('Random Graph Test')
-    # plt.legend()
-    # plt.show()
+    #ns = range(1,1000,50) #set X-axis range and incremental 
+    #nValues, tValues = PlotRunningTime.runningTime(g,Ns = ns, numTrials = 10)
+    #plt.plot(nValues, tValues, color="red", label="Random Graph Runing Time")
+    #plt.xlabel('n')
+    #plt.ylabel('Time(ms)')
+    #plt.title('Random Graph Test')
+    #plt.legend()
+    #plt.show()
     

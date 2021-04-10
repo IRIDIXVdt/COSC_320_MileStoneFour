@@ -22,12 +22,15 @@ if __name__ == "__main__":
     test2 = algorithm.a_star_search(flightPlanMatrix,flightPlanMatrix,5,3)
     # print(test)
     ns = range(5,10,1) #set X-axis range and incremental 
-    nValues, tValues = PlotRunningTime.runningTime(g,Ns = ns, numTrials = 10) #put value in to the runningTime method in PlotRunningTime page
-    nValues2, tValues2 = ucsRunningTime.runningTime(g,Ns = ns, numTrials = 10)#put value in to the runningTime method in ucsRunningTime page
-    nValues3, tValues3 = b_pow_d.b_power_dRunningTime(b = 6, d = factor) #put value in to the b_power_dRunningTime in b_pow_d page
-    plt.plot(nValues, tValues, color="red", label="A Star Search") #plot a star search running time with red line and a star search lable
-    plt.plot(nValues2, tValues2, "--", color="blue", label="UCS") #plot UCS running time with -- line, blue color and UCS lable
+    # nValues, tValues = PlotRunningTime.runningTime(g,Ns = ns, numTrials = 10) #put value in to the runningTime method in PlotRunningTime page
+    # nValues2, tValues2 = ucsRunningTime.runningTime(g,Ns = ns, numTrials = 10)#put value in to the runningTime method in ucsRunningTime page
+    nValues3, tValues3 = b_pow_d.b_power_dRunningTime() #put value in to the b_power_dRunningTime in b_pow_d page
+    
+    # plt.plot(nValues, tValues, color="red", label="A Star Search") #plot a star search running time with red line and a star search lable
+    # plt.plot(nValues2, tValues2, "--", color="blue", label="UCS") #plot UCS running time with -- line, blue color and UCS lable
     plt.plot(nValues3,tValues3,color = "orange" , label = "b_pow_d")
+    
+    
     plt.xlabel('b^d') #X represents n
     plt.ylabel('Time(ms)')#Y represents Time(ms)
     plt.title('A star search running time')#Graph title represents A star search running time

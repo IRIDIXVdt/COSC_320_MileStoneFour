@@ -60,8 +60,10 @@ class Graph:
         chance = branchingFactor/self.qty# this is the chance we need to remove the node 
     # oldBranchNumber = (qty+1)*qty
     # newBranchNumber = (qty+1)*branchingFactor
-        print("We need a branching of ",branchingFactor)
-        print('The chance of having an edage betweeen any two city is : ', chance)
+
+        # print("We need a branching of ",branchingFactor)
+        # print('The chance of having an edage betweeen any two city is : ', chance)
+        
         for i in range(1,self.qty):
             for j in range(0,i):
                 target = random.random()

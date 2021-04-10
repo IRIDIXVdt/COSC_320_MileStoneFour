@@ -107,9 +107,9 @@ def uniform_cost_search(graph=[[]], start_node=0, end_node=1):
         # add the state of node to the expolored list
 
         if(current == end_node):
-            print('found solution with UCS')
-            print('Path cost is: ', current_node.optimal_path_cost)
-            print('Path is ',solution_map[current])
+            # print('found solution with UCS')
+            # print('Path cost is: ', current_node.optimal_path_cost)
+            # print('Path is ',solution_map[current])
             return True
         # we have the optimal solution
         # explored.append(current)
@@ -145,9 +145,9 @@ def a_star_search(graph=[[]], heuristic=[[]], start_node=0, end_node=1):
             solution_map[current]= solution_map[current_node.parent_index]+' -> '+str(current)
 
         if(current == end_node):
-            print('found solution with A Star Search')
-            print('Path cost is: ', current_node.optimal_path_cost)
-            print('Path is ',solution_map[current])
+            # print('found solution with A Star Search')
+            # print('Path cost is: ', current_node.optimal_path_cost)
+            # print('Path is ',solution_map[current])
             return True
 
         current_node_neighbours = find_neighbours(graph,current)

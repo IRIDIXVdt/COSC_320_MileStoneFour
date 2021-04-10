@@ -14,7 +14,10 @@ if __name__ == "__main__":
     mapFlight = g.read_graph()   # read map
     distanceMatrix = g.generateMatrix()    # create distance matrix
     flightPlanMatrix = g.randomFlightPlan(distanceMatrix,6)    # create flight plan matrix
-    
+
+    # startPoint = random.randint(0,bd.d-1)
+    # endPoint = random.randint(0,bd.d-1)
+
     g.calBF(flightPlanMatrix)
 
     test1 = algorithm.uniform_cost_search(flightPlanMatrix,5,3)
@@ -23,7 +26,7 @@ if __name__ == "__main__":
     # print(test)
     ns = range(5,10,1) #set X-axis range and incremental 
 
-    b_pow_d.show_all_time(distanceMatrix, flightPlanMatrix)
+    b_pow_d.show_all_time()
     # nValues, tValues = PlotRunningTime.runningTime(g,Ns = ns, numTrials = 10) #put value in to the runningTime method in PlotRunningTime page
     # nValues2, tValues2 = ucsRunningTime.runningTime(g,Ns = ns, numTrials = 10)#put value in to the runningTime method in ucsRunningTime page
     # nValues3, tValues3 = b_pow_d.b_power_dRunningTime() #put value in to the b_power_dRunningTime in b_pow_d page

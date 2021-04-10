@@ -19,13 +19,13 @@ if __name__ == "__main__":
     
     test2 = algorithm.a_star_search(flightPlanMatrix,flightPlanMatrix,5,3)
     # print(test)
-    ns = range(1,5000,500) #set X-axis range and incremental 
+    ns = range(1,100,20) #set X-axis range and incremental 
     factor = range(1,10,1)
     nValues, tValues = PlotRunningTime.runningTime(g,Ns = ns, numTrials = 10)
     nValues2, tValues2 = PlotRunningTime.runningTime(g,Ns = ns, numTrials = 10)
     #plt.plot(nValues, tValues, color="red", label="A Star Search")
     #plt.plot(nValues2, tValues2, "--", color="blue", label="UCS")
-    plt.plot(ns,[pow(6,ns) for ns, factor in ns])
+    plt.plot(ns,[pow(6,b) for b in ns])
     plt.xlabel('n')
     plt.ylabel('Time(ms)')
     plt.title('A star search running time')

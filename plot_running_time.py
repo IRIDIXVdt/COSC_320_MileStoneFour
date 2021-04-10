@@ -86,4 +86,5 @@ def show_all_time(b = range(50,60,1),d = range(500,1000,10)):
     plt.ylabel('Time(ms)')#Y represents Time(ms)
     plt.title('A star search running time')#Graph title represents A star search running time
     plt.legend()
+    # display the plot
     plt.show()

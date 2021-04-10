@@ -2,43 +2,38 @@
 import random
 from graph2 import Graph
 import algorithm
-import PlotRunningTime
+
 import matplotlib
 import matplotlib.pyplot as plt
-import ucsRunningTime
-import b_pow_d
+
+import plot_running_time
 
 if __name__ == "__main__":
-    factor = range(5,10,1)
-    g = Graph(100,100,6) # We 'Draw' a map in a coordinate system
-    mapFlight = g.read_graph()   # read map
-    distanceMatrix = g.generateMatrix()    # create distance matrix
-    flightPlanMatrix = g.randomFlightPlan(distanceMatrix,6)    # create flight plan matrix
 
-    # startPoint = random.randint(0,bd.d-1)
-    # endPoint = random.randint(0,bd.d-1)
+    """
+    The following code is for demonstrations
+    Graph(100,100,6) is for creating a random map
+    generateMatrix() creates a distance matrix
+    randomFlightPlan() removes certain to create a flight map given branching factor
+    you can verify the braching factor by calling calBF()
 
-    g.calBF(flightPlanMatrix)
+    uniform_cost_search()
+    and
+    a_star_search()
+    from algorithm does the search
+    """
 
-    test1 = algorithm.uniform_cost_search(flightPlanMatrix,5,3)
-    
-    test2 = algorithm.a_star_search(flightPlanMatrix,flightPlanMatrix,5,3)
-    # print(test)
-    ns = range(5,10,1) #set X-axis range and incremental 
+    # g = Graph(100,100,6) # We 'Draw' a map in a coordinate system
+    # mapFlight = g.read_graph()   # read map
+    # distanceMatrix = g.generateMatrix()    # create distance matrix
+    # flightPlanMatrix = g.randomFlightPlan(distanceMatrix,6)    # create flight plan matrix
 
-    b_pow_d.show_all_time()
-    # nValues, tValues = PlotRunningTime.runningTime(g,Ns = ns, numTrials = 10) #put value in to the runningTime method in PlotRunningTime page
-    # nValues2, tValues2 = ucsRunningTime.runningTime(g,Ns = ns, numTrials = 10)#put value in to the runningTime method in ucsRunningTime page
-    # nValues3, tValues3 = b_pow_d.b_power_dRunningTime() #put value in to the b_power_dRunningTime in b_pow_d page
+    # g.calBF(flightPlanMatrix)
+
+    # test1 = algorithm.uniform_cost_search(flightPlanMatrix,5,3)
+    # test2 = algorithm.a_star_search(flightPlanMatrix,flightPlanMatrix,5,3)
+
     
-    # # plt.plot(nValues, tValues, color="red", label="A Star Search") #plot a star search running time with red line and a star search lable
-    # # plt.plot(nValues2, tValues2, "--", color="blue", label="UCS") #plot UCS running time with -- line, blue color and UCS lable
-    # plt.plot(nValues3,tValues3,color = "orange" , label = "b_pow_d")
-    
-    
-    # plt.xlabel('b^d') #X represents n
-    # plt.ylabel('Time(ms)')#Y represents Time(ms)
-    # plt.title('A star search running time')#Graph title represents A star search running time
-    # plt.legend()
-    # plt.show()
+    plot_running_time.show_all_time()# we plot graph here
+ 
     
